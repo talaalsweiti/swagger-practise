@@ -3,7 +3,9 @@ package com.exalt.tasks.springboot.person;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-
+/*
+Create person class
+ */
 @ApiModel(description = "Details about the person")
 public class Person {
     @ApiModelProperty(notes = "The unique id of the person")
