@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @ApiModel(description = "Details about the person")
 //@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "person", propOrder = {
+@XmlType(name = "Person", propOrder = {
         "id",
         "name"
 })
