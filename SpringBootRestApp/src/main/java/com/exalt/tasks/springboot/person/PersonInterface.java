@@ -8,11 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 import java.util.List;
-
+@WebService
 public interface PersonInterface {
     @RequestMapping(value ="/",method= RequestMethod.GET, produces = "application/json")
     @ApiOperation(value = "Return all persons" , response = Person.class)
+    @WebMethod
     List<Person> getAllPersons();
 
     @RequestMapping(value = "/{id}", method= RequestMethod.GET, produces = "application/json")

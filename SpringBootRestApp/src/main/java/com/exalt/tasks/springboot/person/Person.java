@@ -1,23 +1,24 @@
+
 package com.exalt.tasks.springboot.person;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-/*
-Create person class
- */
+import javax.xml.bind.annotation.XmlType;
+
 @ApiModel(description = "Details about the person")
+//@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "person", propOrder = {
+        "id",
+        "name"
+})
 public class Person {
+
     @ApiModelProperty(notes = "The unique id of the person")
     private long id ;
 
     @ApiModelProperty(notes = "The person's name")
     private String name ;
-
-    public Person(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public long getId() {
         return id;

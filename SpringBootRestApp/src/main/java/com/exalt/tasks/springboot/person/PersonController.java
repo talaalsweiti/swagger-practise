@@ -4,6 +4,8 @@ package com.exalt.tasks.springboot.person;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -32,11 +34,12 @@ public class PersonController implements PersonInterface {
         persons.putIfAbsent(person.getId(), person);
         return person;
     }
-
+    @PostConstruct
     public void createPerson() {
-        persons.putIfAbsent(1L, new Person(1L,"Ahmad"));
-        persons.putIfAbsent(2L, new Person(2L,"Mohd"));
-        persons.putIfAbsent(3L, new Person(3L,"Sami"));
+        Person Ahmad = new Person();
+        Ahmad.setName("Ahmad");
+        Ahmad.setId(1L);
+        persons.putIfAbsent(1L,Ahmad);
     }
 
 
