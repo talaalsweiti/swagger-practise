@@ -35,28 +35,31 @@ sourceSets {
 	main {
 		java {
 			srcDir 'src/main/java'
+			srcDir 'build/generated-sources/jaxb'
 		}
 	}
 }
 test {
 	useJUnitPlatform()
 }
-//task genJaxb {
-//	ext.sourcesDir = "${buildDir}"
-//	outputs.dir sourcesDir
-//
-//	doLast() {
-//		project.ant {
-//			taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
-//					classpath: configurations.jaxb.asPath
-//			mkdir(dir: sourcesDir)
-//
-//			xjc(destdir: sourcesDir, schema: schema) {
-//				arg(value: "-wsdl")
-//				produces(dir: sourcesDir, includes: "**/*.java")
-//			}
-//		}
-//	}
-//}
-//
-//compileJava.dependsOn genJaxb
+task genJaxb {
+	ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
+	ext.schema = "src/main/resources/schema1.xsd"
+
+	outputs.dir sourcesDir
+
+	doLast() {
+		project.ant {
+			taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
+					classpath: configurations.jaxb.asPath
+			mkdir(dir: sourcesDir)
+
+			xjc(destdir: sourcesDir, schema: schema) {
+				arg(value: "-wsdl")
+				produces(dir: sourcesDir, includes: "**/*.java")
+			}
+		}
+	}
+}
+
+compileJava.dependsOn genJaxb

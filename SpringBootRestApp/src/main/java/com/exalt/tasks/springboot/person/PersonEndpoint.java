@@ -1,5 +1,7 @@
 package com.exalt.tasks.springboot.person;
 
+import localhost._8080.GetPersonRequest;
+import localhost._8080.GetPersonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -17,8 +19,8 @@ public class PersonEndpoint {
         this.personController=personController;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI,localPart = "person") //defines the handler method according to the namespace and localPart attributes
-    @ResponsePayload // indicates that this method returns a value to be mapped to the response payload
+    @PayloadRoot(namespace = NAMESPACE_URI,localPart = "getPersonRequest") //defines the handler method according to the namespace and localPart attributes
+    @ResponsePayload// indicates that this method returns a value to be mapped to the response payload
     //RequestPayload:  indicates that this method accepts a parameter to be mapped from the incoming request
     public GetPersonResponse getPerson(@RequestPayload GetPersonRequest request) {
         GetPersonResponse response = new GetPersonResponse();
