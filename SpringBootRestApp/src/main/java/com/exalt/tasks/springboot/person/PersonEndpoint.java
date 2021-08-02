@@ -1,7 +1,6 @@
 package com.exalt.tasks.springboot.person;
 
-import localhost._8080.GetPersonRequest;
-import localhost._8080.GetPersonResponse;
+import com.exalt.tasks.springboot.controller.PersonController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -15,8 +14,8 @@ public class PersonEndpoint {
     private PersonController personController;
 
     @Autowired
-    public PersonEndpoint(PersonController personController){
-        this.personController=personController;
+    public PersonEndpoint(PersonController personController) {
+        this.personController = personController;
     }
 
     @PayloadRoot(namespace = NAMESPACE_URI,localPart = "getPersonRequest") //defines the handler method according to the namespace and localPart attributes
@@ -27,5 +26,6 @@ public class PersonEndpoint {
         response.setPerson(personController.getPersonById(request.getId()));
         return response;
     }
+
 
 }

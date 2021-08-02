@@ -28,7 +28,6 @@ dependencies {
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
 	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 	implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.9'
-//	implementation group: 'javax.jws', name: 'com.springsource.javax.jws', version: '2.0.0'
 	implementation "com.sun.xml.ws:jaxws-ri:2.3.3"
 }
 sourceSets {
@@ -42,9 +41,18 @@ sourceSets {
 test {
 	useJUnitPlatform()
 }
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+			srcDir 'build/generated-sources/jaxb'
+		}
+	}
+}
+
 task genJaxb {
-	ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
-	ext.schema = "src/main/resources/schema1.xsd"
+	ext.sourcesDir = "${buildDir}/../src/main/java"
+	ext.schema = "src/main/resources/personSchema.xsd"
 
 	outputs.dir sourcesDir
 
