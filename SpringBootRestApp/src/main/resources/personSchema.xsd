@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="com/exalt/tasks/springboot/person"
+           targetNamespace="com/exalt/tasks/springboot/person"
+           elementFormDefault="qualified">
+
+  <xs:complexType name="personDB">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="salaries" type="tns:doubleList"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="personDTO">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" nillable="false"/>
+      <xs:element name="name" type="xs:string" minOccurs="0" />
+      <xs:element name="salaries" type="tns:doubleList" />
+      <xs:element name="annualSalary" type="xs:double" default="0.0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+<xs:simpleType name="doubleList">
+    <xs:list itemType="xs:double"/>
+  </xs:simpleType>
+
+
+  <xs:element name="getPersonRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="person" type="tns:personDTO"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
