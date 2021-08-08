@@ -20,17 +20,17 @@ public class PersonController implements PersonInterface {
     ConcurrentHashMap<Long, PersonDTO> persons = new ConcurrentHashMap<>();
 
     @PostConstruct
-    public void createPerson(String name, long id , List salary) {
+    public void createPerson( ) {
         PersonDTO person = new PersonDTO();
-        person.setName(name);
-        person.setId(id);
-        persons.putIfAbsent(id, person);
+        person.setName("Ahmad");
+        person.setId(1L);
+        persons.putIfAbsent(1L, person);
     }
 
     @Override
     public List<PersonDTO> getAllPersons() {
-        createPerson("Ahmad",1L,  Arrays.asList(1000, 1500, 1000));
-        createPerson("Sami",2L,  Arrays.asList(1000, 1500, 2000));
+        createPerson( );
+
         return  new ArrayList<>(persons.values());
      }
 
