@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-
+@RequestMapping("/person")
 public interface PersonInterface {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     @ApiOperation(value = "Return all persons", response = PersonDTO.class)
     List<PersonDTO> getAllPersons();
 

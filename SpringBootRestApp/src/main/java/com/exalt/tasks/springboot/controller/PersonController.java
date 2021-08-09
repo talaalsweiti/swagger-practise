@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
-@RequestMapping("/person")
 @Component
-
 public class PersonController implements PersonInterface {
 
     ConcurrentHashMap<Long, PersonDTO> persons = new ConcurrentHashMap<>();
