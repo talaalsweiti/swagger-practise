@@ -1,4 +1,4 @@
-package com.exalt.tasks.springboot.person;
+package com.exalt.tasks.springboot.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
